@@ -13,10 +13,10 @@
         <nav>
             <ul class="flex space-x-8">
                 <li><a href="/" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('/') ? 'text-green-500' : '' }}">Home</a></li>
-                <li><a href="#about" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('about-us') ? 'text-green-500' : '' }}">About Us</a></li>
-                <li><a href="#services" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('services') ? 'text-green-500' : '' }}">Services</a></li>
-                <li><a href="#portfolio" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('portfolio') ? 'text-green-500' : '' }}">Portfolio</a></li>
-                <li><a href="#blog" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('blog') ? 'text-green-500' : '' }}">Blog</a></li>
+                <li><a href="/about-us" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('about-us') ? 'text-green-500' : '' }}">About Us</a></li>
+                <li><a href="/services" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('services') ? 'text-green-500' : '' }}">Services</a></li>
+                <li><a href="/portfolio" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('portfolio') ? 'text-green-500' : '' }}">Portfolio</a></li>
+                <li><a href="/blog" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 active:text-green-500 {{ request()->is('blog') ? 'text-green-500' : '' }}">Blog</a></li>
                 <li><a href="/contact" wire:navigate class="text-lg font-semibold text-gray-800 hover:text-green-500 transition-colors duration-200 {{ request()->is('contact') ? 'text-green-500' : '' }}"  >Contact</a></li>
             </ul>
         </nav>
