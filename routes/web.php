@@ -14,6 +14,7 @@ Route::get('/about-us', AboutPage::class);
 Route::get('/portfolio', PortfolioPage::class);
 Route::get('/services', ServicesPage::class);
 Route::get('/contact', ContactPage::class);
-Route::get('/blog', BlogPage::class);
-Route::get('/blog/{slug}', SinglePost::class)->name('blog.single');
+Route::get('/blog', BlogPage::class)->name('blog');
+Route::get('/post/{slug}', SinglePost::class)->name('post.show');
+
 

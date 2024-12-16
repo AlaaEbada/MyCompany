@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'content', 'image', 'category_id'];
+    protected $fillable = ['title', 'slug', 'body', 'image', 'category_id'];
 
     public function category()
     {

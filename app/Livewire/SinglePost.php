@@ -15,7 +15,7 @@ class SinglePost extends Component
         // Fetch the post using the slug
         $this->post = Post::where('slug', $slug)->firstOrFail();
     }
-
+    
     public function render()
     {
         return view('livewire.single-post');

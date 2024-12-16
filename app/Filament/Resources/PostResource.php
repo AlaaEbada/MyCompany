@@ -48,7 +48,8 @@ class PostResource extends Resource
 
                 RichEditor::make('body')
                     ->label('Content')
-                    ->required(),
+                    ->required()
+                    ->dehydrateStateUsing(fn ($state) => strip_tags($state)),
 
                 FileUpload::make('image')
                     ->label('Post Image')
