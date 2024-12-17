@@ -19,6 +19,14 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    // app/Models/Post.php
+
+    public function likes()
+    {
+        return $this->hasMany(PostLike::class);
+    }
+
+
     protected static function booted()
     {
         static::creating(function ($post) {

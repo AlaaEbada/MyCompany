@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Forms\Components\TextInput;
@@ -41,6 +42,13 @@ class CategoryResource extends Resource
                 Textarea::make('description')
                     ->label('Description')
                     ->maxLength(500),
+                    // Color picker for text color
+                ColorPicker::make('text_color')
+                ->label('Text Color'),
+
+                // Color picker for background color
+                ColorPicker::make('bg_color')
+                    ->label('Background Color'),
             ]);
     }
 

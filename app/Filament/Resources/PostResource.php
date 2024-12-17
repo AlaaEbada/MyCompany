@@ -14,10 +14,12 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Set;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
@@ -29,7 +31,7 @@ class PostResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Content Management';
-    
+
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
@@ -63,7 +65,7 @@ class PostResource extends Resource
                     ->required()
                     ->searchable(),
 
-            
+
             ]);
     }
 
@@ -105,7 +107,7 @@ class PostResource extends Resource
                 ->width('50px')
                 ->height('50px')
                 ->getStateUsing(fn ($record) => asset('storage/' . $record->image)),
-                
+
         ])->actions([
             Tables\Actions\EditAction::make(),
             Tables\Actions\DeleteAction::make(),
@@ -130,5 +132,5 @@ class PostResource extends Resource
         ];
     }
 
-    
+
 }
