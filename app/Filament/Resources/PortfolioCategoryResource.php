@@ -2,26 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Models\Category;
+use App\Filament\Resources\PortfolioCategoryResource\Pages;
+use App\Filament\Resources\PortfolioCategoryResource\RelationManagers;
+use App\Models\PortfolioCategory;
 use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class PortfolioCategoryResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = PortfolioCategory::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     protected static ?string $navigationLabel = 'Categories';
 
-    protected static ?string $navigationGroup = 'Blog Management';
+    protected static ?string $navigationGroup = 'Portfolio Management';
 
 
     public static function form(Forms\Form $form): Forms\Form
@@ -43,13 +47,7 @@ class CategoryResource extends Resource
                 Textarea::make('description')
                     ->label('Description')
                     ->maxLength(500),
-                    // Color picker for text color
-                ColorPicker::make('text_color')
-                ->label('Text Color'),
 
-                // Color picker for background color
-                ColorPicker::make('bg_color')
-                    ->label('Background Color'),
             ]);
     }
 
@@ -66,6 +64,11 @@ class CategoryResource extends Resource
                     ->label('Category Name')
                     ->sortable()
                     ->searchable(),
+
+                TextColumn::make('Description')
+                ->label('Category Description')
+                ->sortable()
+                ->searchable(),
 
                 TextColumn::make('slug')
                     ->label('Slug')
@@ -91,16 +94,16 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // Add relations if needed
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListPortfolioCategories::route('/'),
+            'create' => Pages\CreatePortfolioCategory::route('/create'),
+            'edit' => Pages\EditPortfolioCategory::route('/{record}/edit'),
         ];
     }
 }

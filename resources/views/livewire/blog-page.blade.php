@@ -19,6 +19,27 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
             <!-- Blog Posts Column (Left) -->
             <div class="col-span-3">
+                <!-- Show Selected Category -->
+
+                @if ($selectedCategory)
+                @php
+                    $category = $this->categories->firstWhere('id', $selectedCategory);
+                @endphp
+
+                @if ($category)
+                    <div class="mb-4 flex items-center justify-between bg-primary-light p-3 rounded-md">
+                        <span>Filtered by:</span>
+                        <span class="p-1 px-3 rounded-md" style="background-color: {{ $category->bg_color }}; color: {{ $category->text_color }}">
+                            {{ $category->name }}
+                            <button wire:click="removeCategoryFilter" class="bg-transparent hover:bg-primary-dark p-1 rounded-full">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </span>
+                    </div>
+                @endif
+            @endif
+
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     @foreach ($this->posts as $post)
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl hover:scale-105 transition duration-300">
@@ -38,9 +59,11 @@
                                     <span class="text-lg">{{ $post->likes->count() }}</span>
                                 </button>
 
-                                <a href="{{ route('post.show', ['slug' => $post->slug]) }}" class="text-primary-light font-semibold hover:text-primary transition duration-300">
+                                <a wire:navigate href="{{ route('post.show', ['slug' => $post->slug]) }}"
+                                    class="text-primary-light font-semibold hover:text-primary transition duration-300">
                                     Read More
                                 </a>
+
                             </div>
 
                         </div>
@@ -48,8 +71,8 @@
                     @endforeach
                 </div>
 
-                <div class="mt-10 ">
-                    {{ $this->posts->links(data: ['scrollTo' => false])  }}
+                <div class="mt-10">
+                    {{ $this->posts->links(data: ['scrollTo' => false]) }}
                 </div>
             </div>
 
@@ -61,23 +84,24 @@
                     <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search..." class="w-full p-2 border rounded-md">
                 </div>
 
-                <!-- Recommended Topics Section -->
-                <div>
+                <!-- Categories Section -->
+                <div class="mb-6">
                     <h4 class="text-xl font-semibold mb-4">Recommended Topics</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-700 hover:text-primary transition duration-300">Technology</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-primary transition duration-300">Business</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-primary transition duration-300">Design</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-primary transition duration-300">Marketing</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-primary transition duration-300">Lifestyle</a></li>
+                    <ul class="flex flex-wrap">
+                        @foreach ($this->categories as $category)
+                            <li class="mx-1 my-1">
+                                <button wire:click="filterByCategory({{ $category->id }})"
+                                    style="background-color: {{ $category->bg_color ?? '#f0f0f0' }}; color: {{ $category->text_color ?? '#333' }}"
+                                    class="p-2 rounded-lg hover:bg-opacity-80 hover:text-white transition duration-300"
+                                    aria-label="Filter by {{ $category->name }}">
+                                    {{ Str::limit($category->name, 15) }}
+                                </button>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
+
             </div>
         </div>
-
-        <!-- Pagination Links -->
-
     </section>
-
-
 </div>

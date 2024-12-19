@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostLike;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,50 +17,81 @@ class BlogPage extends Component
     use WithPagination;
 
     public $search;
+    public $selectedCategory = null; // Property to hold the selected category
 
+    // Get posts based on search and category
     #[Computed()]
     public function posts()
     {
-        return Post::where('title', 'like', '%' . $this->search . '%')->paginate(3);
+        $query = Post::query();
 
-    }
-
-    public function likePost($postId)
-    {
-
-        $userId = Auth::id();
-
-        if($userId){
-            // Check if the user has already liked the post
-            $existingLike = PostLike::where('user_id', $userId)
-            ->where('post_id', $postId)
-            ->first();
-
-            if ($existingLike) {
-            // If already liked, "unlike" the post
-            $existingLike->delete();
-            } else {
-            // If not liked, create a new like
-            PostLike::create([
-                'user_id' => $userId,
-                'post_id' => $postId,
-            ]);
-            }
-
-        }else {
-            redirect('/login');
+        // Apply category filter
+        if ($this->selectedCategory) {
+            $query->where('category_id', $this->selectedCategory);
         }
 
+        // Apply search filter
+        if ($this->search) {
+            $query->where('title', 'like', '%' . $this->search . '%');
+        }
 
+        return $query->paginate(3);
     }
 
-        public function userHasLiked($postId)
+    #[Computed()]
+    public function categories()
+    {
+        return Category::all();
+    }
+
+    // Handle liking a post
+    public function likePost($postId)
+    {
+        $userId = Auth::id();
+
+        if ($userId) {
+            // Check if the user has already liked the post
+            $existingLike = PostLike::where('user_id', $userId)
+                ->where('post_id', $postId)
+                ->first();
+
+            if ($existingLike) {
+                // If already liked, "unlike" the post
+                $existingLike->delete();
+            } else {
+                // If not liked, create a new like
+                PostLike::create([
+                    'user_id' => $userId,
+                    'post_id' => $postId,
+                ]);
+            }
+        } else {
+            redirect('/login');
+        }
+    }
+
+    // Check if the user has liked a specific post
+    public function userHasLiked($postId)
     {
         return PostLike::where('user_id', Auth::id())->where('post_id', $postId)->exists();
     }
 
+    // Reset pagination when search term changes
     public function updatingSearch()
     {
+        $this->resetPage();
+    }
+
+    // Filter posts by category
+    public function filterByCategory($categoryId)
+    {
+        $this->selectedCategory = $categoryId;
+        $this->resetPage();
+    }
+
+    public function removeCategoryFilter()
+    {
+        $this->selectedCategory = null;
         $this->resetPage();
     }
 

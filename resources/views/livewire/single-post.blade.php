@@ -1,38 +1,85 @@
-<div class="single-post bg-gray-100">
+<div class="single-post bg-gray-50">
     <!-- Hero Section -->
-    <x-hero-section title="{{$post->title}}" />
+    <x-hero-section title="{{ $post->title }}" />
 
     <!-- Single Post Content -->
-    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-20">
-        
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-20">
+
         <!-- Post Image -->
         @if ($post->image)
             <div class="relative">
-                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-72 object-cover rounded-t-lg">
+                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-96 object-cover rounded-t-lg">
             </div>
         @endif
 
-        <!-- Post Title -->
-        <div class="px-6 py-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ $post->title }}</h1>
+        <!-- Post Title and Meta Info -->
+        <div class="px-8 py-10">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">{{ $post->title }}</h1>
 
             <!-- Category and Date -->
-            <div class="flex items-center text-gray-600 text-sm mb-6">
-                <span class="mr-4"><strong>Category:</strong> {{ $post->category->name }}</span>
-                <span><strong>Posted on:</strong> {{ $post->created_at->format('F j, Y') }}</span>
+            <div class="flex items-center text-gray-500 text-sm mb-8 space-x-6">
+                <span class="flex items-center space-x-2">
+                    <strong class="text-gray-700">Category:</strong>
+                    <span>{{ $post->category->name }}</span>
+                </span>
+                <span class="flex items-center space-x-2">
+                    <strong class="text-gray-700">Posted on:</strong>
+                    <span>{{ $post->created_at->format('F j, Y') }}</span>
+                </span>
             </div>
 
             <!-- Post Body -->
-            <div class="text-gray-700 leading-relaxed mb-8">
-                {{ $post->body }}
+            <div class="text-gray-700 leading-relaxed text-lg mb-10">
+                {!! nl2br(e($post->body)) !!}
             </div>
 
-            <!-- Read More Button -->
-            <div class="text-center">
-                <a href="{{ route('blog') }}" class="inline-block bg-primary-light text-white py-2 px-6 rounded-full font-semibold hover:bg-primary transition duration-300">
+            <!-- Like Button with Heart Icon -->
+            <div class="flex items-center justify-between mb-10">
+                <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2 group">
+                    <i class="fa fa-heart text-xl transition {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400 group-hover:text-red-500' }}"></i>
+                    <span class="text-lg font-semibold text-gray-700 group-hover:text-red-500">
+                        {{ $post->likes->count() }}
+                    </span>
+                </button>
+                <a wire:navigate href="{{ route('blog') }}" class="inline-block bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition duration-300">
                     Back to Blog
                 </a>
             </div>
         </div>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-16">
+        <h2 class="text-3xl font-semibold text-gray-900 mb-6 border-b-2 pb-2">Comments</h2>
+
+        <!-- Livewire Comment Section -->
+        @livewire('comment-section', ['post_id' => $post->id])
+    </div>
+
+    <!-- Related Posts Section -->
+    <div class="max-w-4xl mx-auto mt-16 pb-6">
+        <h2 class="text-3xl font-semibold text-gray-900 mb-8">Related Posts</h2>
+
+        @if($relatedPosts)
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach ($relatedPosts as $relatedPost)
+                    <div class="bg-white shadow-lg rounded-lg hover:shadow-xl transition">
+                        <a href="{{ route('post.show', $relatedPost->slug) }}" class="block">
+                            <img src="{{ asset('storage/' . $relatedPost->image) }}" alt="{{ $relatedPost->title }}" class="w-full h-48 object-cover rounded-t-lg">
+                        </a>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-gray-800 hover:text-green-600">
+                                <a href="{{ route('post.show', $relatedPost->slug) }}">
+                                    {{ $relatedPost->title }}
+                                </a>
+                            </h3>
+                            <p class="text-sm text-gray-600 mt-2 break-words">
+                                {{ Str::limit($relatedPost->body, 100) }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 </div>

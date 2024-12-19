@@ -130,30 +130,84 @@
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-slide-up">Our Work</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-300 h-64 rounded-md transform hover:scale-105 transition duration-300"></div>
-                <div class="bg-gray-300 h-64 rounded-md transform hover:scale-105 transition duration-300"></div>
-                <div class="bg-gray-300 h-64 rounded-md transform hover:scale-105 transition duration-300"></div>
+                @foreach($portfolios as $portfolio)
+
+                <a wire:navigate href="{{ route('portfolio.show', ['slug' => $portfolio->slug]) }}"
+                    class="group relative bg-gray-100 rounded-lg shadow-lg overflow-hidden block h-60">
+                        <img src="storage/{{$portfolio->image}}" alt="Project 1" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition"></div>
+                        <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <h3 class="text-2xl font-semibold text-white mb-2">{{$portfolio->title}}</h3>
+                            <span class="text-lg text-white">{{$portfolio->Category->name}}</span>
+                        </div>
+                    </a>
+
+                @endforeach
+
             </div>
+
+            <div class="mt-10">
+                <a href="/portfolio" wire:navigate
+                class="bg-gradient-to-r from-[#159957] to-[#155799] hover:bg-primary-light text-white px-6 py-3 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 animate-bounce">
+                    More Projects
+                </a>
+            </div>
+
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-gray-200 py-20 px-6 relative">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-slide-up">What Our Clients Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 shadow-lg rounded-md transform hover:scale-105 transition duration-300">
-                    <p class="italic">"This company transformed our business. Highly recommended!"</p>
-                    <p class="mt-4 font-semibold">- Client Name</p>
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-gradient-to-r from-gray-200 to-gray-300 py-24 px-6 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto text-center">
+        <!-- Section Title -->
+        <h2 class="text-4xl font-semibold text-gray-900 mb-12 animate-slide-up">
+            What Our Clients Say
+        </h2>
+
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 shadow-xl rounded-xl transform hover:scale-105 transition duration-300 hover:shadow-2xl">
+                <div class="flex items-center">
+                    <img src="{{ asset('images/client.jpg') }}" alt="Client Name" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="italic text-gray-700">"This company transformed our business. Highly recommended!"</p>
+                        <p class="mt-4 font-semibold text-gray-900">- Client Name</p>
+                        <p class="text-gray-600">CEO, Company Name</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 shadow-lg rounded-md transform hover:scale-105 transition duration-300">
-                    <p class="italic">"Exceptional service and attention to detail. Great experience!"</p>
-                    <p class="mt-4 font-semibold">- Client Name</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 shadow-xl rounded-xl transform hover:scale-105 transition duration-300 hover:shadow-2xl">
+                <div class="flex items-center">
+                    <img src="{{ asset('images/client.jpg') }}" alt="Client Name" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="italic text-gray-700">"Exceptional service and attention to detail. Great experience!"</p>
+                        <p class="mt-4 font-semibold text-gray-900">- Client Name</p>
+                        <p class="text-gray-600">Founder, Company Name</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 (Optional) -->
+            <div class="bg-white p-8 shadow-xl rounded-xl transform hover:scale-105 transition duration-300 hover:shadow-2xl">
+                <div class="flex items-center">
+                    <img src="{{ asset('images/client.jpg') }}" alt="Client Name" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="italic text-gray-700">"A truly outstanding team to work with. We’ll definitely be back!"</p>
+                        <p class="mt-4 font-semibold text-gray-900">- Client Name</p>
+                        <p class="text-gray-600">Marketing Director, Company Name</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-0 left-0 w-32 h-32 bg-primary-dark opacity-50 rounded-full blur-3xl"></div>
-    </section>
+    </div>
+
+
+</section>
+
+
 
 
 </div>

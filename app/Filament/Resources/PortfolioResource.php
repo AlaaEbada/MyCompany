@@ -2,42 +2,39 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PostResource\Pages;
-use App\Models\Category;
-use App\Models\Post;
-use Filament\Facades\Filament;
+use App\Filament\Resources\PortfolioResource\Pages;
+use App\Filament\Resources\PortfolioResource\RelationManagers;
+use App\Models\Portfolio;
 use Filament\Forms;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Set;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PostResource extends Resource
+class PortfolioResource extends Resource
 {
-    protected static ?string $model = Post::class;
+    protected static ?string $model = Portfolio::class;
 
-    // Define the resource
-    protected static ?string $navigationLabel = 'Posts';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationLabel = 'Portfolios';
 
-    protected static ?string $navigationGroup = 'Blog Management';
+    protected static ?string $navigationGroup = 'Portfolio Management';
 
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->label('Post Title')
+                    ->label('Project Title')
                     ->required()
                     ->maxLength(255),
 
@@ -48,15 +45,15 @@ class PostResource extends Resource
                     ->maxLength(255)
                     ->hint('Will be auto-generated if left blank'),
 
-                RichEditor::make('body')
-                    ->label('Content')
+                RichEditor::make('description')
+                    ->label('Description')
                     ->required()
                     ->dehydrateStateUsing(fn ($state) => strip_tags($state)),
 
                 FileUpload::make('image')
-                    ->label('Post Image')
+                    ->label('Project Image')
                     ->image()
-                    ->directory('posts')
+                    ->directory('portfolios')
                     ->required(),
 
                 Select::make('category_id')
@@ -93,11 +90,6 @@ class PostResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                    TextColumn::make('user.name')
-                    ->label('Auther')
-                    ->sortable()
-                    ->searchable(),
-
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime(),
@@ -115,22 +107,19 @@ class PostResource extends Resource
             Tables\Actions\DeleteBulkAction::make(),
         ]);
     }
-
     public static function getRelations(): array
     {
         return [
-            // You can add more relation managers if needed
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
-            'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'index' => Pages\ListPortfolios::route('/'),
+            'create' => Pages\CreatePortfolio::route('/create'),
+            'edit' => Pages\EditPortfolio::route('/{record}/edit'),
         ];
     }
-
-
 }

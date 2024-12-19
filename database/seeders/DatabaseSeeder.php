@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Portfolio;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
+        Portfolio::factory()->count(10)->create(); // Create 10 portfolios
+
 
         User::factory()->create([
             'name' => 'Test User',

@@ -124,7 +124,7 @@
             <div class="text-center p-10 mt-20 rounded-md bg-white  drop-shadow-xl">
                 <h3 class="text-3xl font-bold text-gray-900 mb-4">Ready to Work With Us?</h3>
                 <p class="text-lg text-gray-600 mb-6">Let’s create something amazing together.</p>
-                <a href="/contact"
+                <a wire:navigate href="/contact"
                     class="bg-gradient-to-r from-[#159957] to-[#155799] hover:from-[#155799] hover:to-[#159957] text-white px-8 py-3 rounded-lg text-lg shadow-lg transform transition duration-300 hover:scale-105">
                     Get in Touch
                 </a>

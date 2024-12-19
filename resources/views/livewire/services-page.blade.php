@@ -77,7 +77,7 @@
     <section class="py-20 px-6 bg-gray-100 text-center">
         <h3 class="text-3xl font-bold text-gray-900 mb-4">Ready to Start Your Journey?</h3>
         <p class="text-lg text-gray-600 mb-6">Get in touch with us today to learn how we can help you grow your business.</p>
-        <a href="/contact" class="bg-gradient-to-r from-[#159957] to-[#155799] text-white px-8 py-3 rounded-lg text-lg shadow-lg transform transition duration-300 hover:scale-105">
+        <a wire:navigate href="/contact" class="bg-gradient-to-r from-[#159957] to-[#155799] text-white px-8 py-3 rounded-lg text-lg shadow-lg transform transition duration-300 hover:scale-105">
             Contact Us
         </a>
     </section>
