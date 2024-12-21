@@ -146,7 +146,7 @@
 
             </div>
 
-            <div class="mt-10">
+            <div class="mt-12">
                 <a href="/portfolio" wire:navigate
                 class="bg-gradient-to-r from-[#159957] to-[#155799] hover:bg-primary-light text-white px-6 py-3 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 animate-bounce">
                     More Projects
@@ -157,7 +157,7 @@
     </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="bg-gradient-to-r from-gray-200 to-gray-300 py-24 px-6 relative overflow-hidden">
+<section id="testimonials" class="bg-gray-200 py-24 px-6 relative overflow-hidden">
     <div class="max-w-7xl mx-auto text-center">
         <!-- Section Title -->
         <h2 class="text-4xl font-semibold text-gray-900 mb-12 animate-slide-up">

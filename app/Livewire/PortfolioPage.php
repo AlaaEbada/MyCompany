@@ -15,7 +15,7 @@ class PortfolioPage extends Component
     public function render()
     {
         return view('livewire.portfolio-page',[
-            'portfolios' => Portfolio::latest()->paginate(6)
+            'portfolios' => Portfolio::latest()->paginate(6),
         ]);
     }
 }

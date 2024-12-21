@@ -14,7 +14,6 @@
     <x-hero-section title="Our Blog"
         subtitle="Explore our latest insights, stories, and industry news. Stay up-to-date with our thoughts and expertise." />
 
-    <!-- Blog Section -->
     <section id="blog" class="py-20 px-6 bg-gray-50">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
             <!-- Blog Posts Column (Left) -->

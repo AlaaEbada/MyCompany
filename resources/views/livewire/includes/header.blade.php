@@ -3,7 +3,7 @@
         <!-- Logo -->
         <a href="/" wire:navigate>
             <h1 class="text-2xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#159957] to-[#155799] hover:scale-105 transition-transform duration-300 cursor-pointer">
-                Company Logo
+                MediaSharks
             </h1>
         </a>
 

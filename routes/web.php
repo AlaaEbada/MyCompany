@@ -20,14 +20,8 @@ Route::get('/post/{slug}', SinglePost::class)->name('post.show');
 Route::get('/portfolio/{slug}', SinglePortfolio::class)->name('portfolio.show');
 
 
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+Route::get('/dashboard', function () {
+        return redirect('/admin');
     })->name('dashboard');
-});
+
 

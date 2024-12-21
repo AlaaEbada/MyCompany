@@ -20,10 +20,10 @@
         <form wire:submit.prevent="add_comment" class="mb-4">
             @csrf
             <div class="form-group">
-                <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
                         wire:model="comment" rows="3" placeholder="Comment Something Here" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded-lg">Comment</button>
+            <button type="submit" class="hover:bg-green-700 bg-green-600 text-white py-2 px-4 rounded-lg">Comment</button>
         </form>
     </div>
 
@@ -65,10 +65,10 @@
                             <form wire:submit.prevent="add_reply" class="mt-3">
                                 @csrf
 
-                                <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-red-400"
+                                <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
                                         wire:model="reply" rows="3" placeholder="Write a reply here..." required></textarea>
 
-                                <button type="submit" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded-lg mt-2">Submit Reply</button>
+                                <button type="submit" class=" bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-2">Submit Reply</button>
                                 <span wire:click="close_reply_form" class="bg-red-500 text-white p-2 rounded-lg mt-2 cursor-pointer">Close Reply</span>
                             </form>
                         @endif

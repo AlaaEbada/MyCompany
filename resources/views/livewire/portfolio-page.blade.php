@@ -28,7 +28,8 @@
             </div>
 
             <div class="mt-10 ">
-                {{ $portfolios->links(data: ['scrollTo' => false])  }}
+                {{ $portfolios->links(data: ['scrollTo' => false]) }}
+
             </div>
 
         </div>

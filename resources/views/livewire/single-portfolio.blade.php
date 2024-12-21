@@ -20,7 +20,7 @@
                 <h1 class="text-4xl font-bold text-gray-900">{{ $portfolio->title }}</h1>
 
                 <!-- Back Button -->
-                <a href="{{ route('portfolioPage') }}" class="inline-block bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition duration-300">
+                <a wire:navigate href="{{ route('portfolioPage') }}" class="inline-block bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition duration-300">
                     Back to Portfolio
                 </a>
             </div>

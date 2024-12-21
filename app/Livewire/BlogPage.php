@@ -16,6 +16,7 @@ class BlogPage extends Component
 {
     use WithPagination;
 
+    #[Url()]
     public $search;
     public $selectedCategory = null; // Property to hold the selected category
 
