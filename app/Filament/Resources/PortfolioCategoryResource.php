@@ -14,6 +14,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Forms\Set;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -35,7 +37,11 @@ class PortfolioCategoryResource extends Resource
                 TextInput::make('name')
                     ->label('Category Name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, $state) {
+                        $set('slug', Str::slug($state));
+                    }),
 
                 TextInput::make('slug')
                     ->label('Slug')
@@ -64,7 +70,7 @@ class PortfolioCategoryResource extends Resource
                     ->label('Category Name')
                     ->sortable()
                     ->searchable(),
-
+                    
                 TextColumn::make('Description')
                 ->label('Category Description')
                 ->sortable()

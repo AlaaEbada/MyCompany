@@ -39,7 +39,11 @@ class PostResource extends Resource
                 TextInput::make('title')
                     ->label('Post Title')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255) 
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, $state) {
+                        $set('slug', Str::slug($state));
+                    }),
 
                 TextInput::make('slug')
                     ->label('Slug')

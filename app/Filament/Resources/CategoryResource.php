@@ -8,6 +8,8 @@ use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Illuminate\Support\Str;
+use Filament\Forms\Set;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
@@ -31,7 +33,11 @@ class CategoryResource extends Resource
                 TextInput::make('name')
                     ->label('Category Name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, $state) {
+                        $set('slug', Str::slug($state));
+                    }),
 
                 TextInput::make('slug')
                     ->label('Slug')
