@@ -25,19 +25,33 @@ class BlogPage extends Component
     public function posts()
     {
         $query = Post::query();
-
+    
         // Apply category filter
         if ($this->selectedCategory) {
             $query->where('category_id', $this->selectedCategory);
         }
-
+    
         // Apply search filter
         if ($this->search) {
             $query->where('title', 'like', '%' . $this->search . '%');
         }
-
-        return $query->paginate(3);
+    
+        // Eager load likes
+        $posts = $query->with('likes')->paginate(3);
+    
+        // Fetch liked post IDs for the authenticated user in bulk
+        $likedPostIds = PostLike::where('user_id', Auth::id())
+            ->pluck('post_id')
+            ->toArray();
+    
+        // Add a flag to each post to indicate if the user liked it
+        foreach ($posts as $post) {
+            $post->user_liked = in_array($post->id, $likedPostIds);
+        }
+    
+        return $posts;
     }
+    
 
     #[Computed()]
     public function categories()
@@ -71,11 +85,6 @@ class BlogPage extends Component
         }
     }
 
-    // Check if the user has liked a specific post
-    public function userHasLiked($postId)
-    {
-        return PostLike::where('user_id', Auth::id())->where('post_id', $postId)->exists();
-    }
 
     // Reset pagination when search term changes
     public function updatingSearch()

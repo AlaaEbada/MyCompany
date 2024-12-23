@@ -18,7 +18,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition"></div>
                         <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
                             <h3 class="text-2xl font-semibold text-white mb-2">{{$portfolio->title}}</h3>
-                            <span class="text-lg text-white">{{$portfolio->Category->name}}</span>
+                            <span class="text-lg text-white">{{$portfolio->category->name}}</span>
                         </div>
                     </a>
 

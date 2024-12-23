@@ -54,7 +54,7 @@
                             <div class="flex justify-between">
                                 <!-- Like Button with Heart Icon -->
                                 <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2">
-                                    <i class="fa fa-heart {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
+                                    <i class="fa fa-heart {{ $post->user_liked ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
                                     <span class="text-lg">{{ $post->likes->count() }}</span>
                                 </button>
 
