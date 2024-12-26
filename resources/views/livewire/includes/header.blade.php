@@ -21,35 +21,35 @@
         <!-- Desktop Navigation Menu -->
         <nav class="hidden lg:flex space-x-6 items-center">
             <ul class=" flex space-x-6 items-center rtl:space-x-reverse">
-                <li><a href="/"
+                <li><a href="/" wire:navigate
                         class=" {{ request()->is('/') ? 'text-green-500 ' : '' }}  text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.home')}} </a>
                 </li>
-                <li><a href="/about-us"
+                <li><a href="/about-us" wire:navigate
                         class=" {{ request()->is('about-us') ? 'text-green-500 ' : '' }} text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.about')}} </a></li>
-                <li><a href="/services"
+                <li><a href="/services" wire:navigate
                         class=" {{ request()->is('services') ? 'text-green-500 ' : '' }}text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.services')}}</a>
                 </li>
-                <li><a href="/portfolio"
+                <li><a href="/portfolio" wire:navigate
                         class=" {{ request()->is('portfolio') || request()->is('portfolio/*') ? 'text-green-500 ' : '' }} text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.portfolio')}}</a>
                 </li>
-                <li><a href="/blog"
+                <li><a href="/blog" wire:navigate
                         class=" {{ request()->is('blog') || request()->is('post/*') ? 'text-green-500 ' : '' }} text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.blog')}}</a>
                 </li>
-                <li><a href="/contact"
+                <li><a href="/contact" wire:navigate
                         class=" {{  request()->is('contact') ? 'text-green-500 ' : '' }}text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">{{__('messages.contact_us')}}</a>
                 </li>
 
                 @if (app()->getLocale() == 'ar')
 
                     <li class="language-switcher text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">
-                        <a href="locale/en" class="flex">
+                        <a wire:navigate href="locale/en" class="flex">
                             <img class="w-5 mx-1" src="{{ asset('images/en.png') }}" alt="">
                             EN
                         </a>
                     </li>
                 @else
                     <li class="language-switcher text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">
-                        <a href="locale/ar" class=" flex">
+                        <a wire:navigate href="locale/ar" class=" flex">
                             <img class="w-5 mx-1" src="{{ asset('images/ar.png') }}" alt="">
                             <span>AR</span>
                         </a>
@@ -137,25 +137,25 @@
 
                     <ul class="flex flex-col space-y-6 items-center justify-center mt-6">
                         <!-- Main Links -->
-                        <li><a href="/" class=" {{ request()->is('/') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.home') }}</a></li>
-                        <li><a href="/about-us" class=" {{ request()->is('about-us') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.about') }}</a></li>
-                        <li><a href="/services" class="  {{ request()->is('services') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.services') }}</a></li>
-                        <li><a href="/portfolio" class=" {{ request()->is('portfolio') || request()->is('portfolio/*') ? 'text-green-500 ' : '' }}text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.portfolio') }}</a></li>
-                        <li><a href="/blog" class=" {{ request()->is('blog') || request()->is('post/*') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.blog') }}</a></li>
-                        <li><a href="/contact" class= "{{ request()->is('contact') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.contact_us') }}</a></li>
+                        <li><a href="/" wire:navigate class=" {{ request()->is('/') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.home') }}</a></li>
+                        <li><a href="/about-us" wire:navigate class=" {{ request()->is('about-us') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.about') }}</a></li>
+                        <li><a href="/services" wire:navigate class="  {{ request()->is('services') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.services') }}</a></li>
+                        <li><a href="/portfolio" wire:navigate class=" {{ request()->is('portfolio') || request()->is('portfolio/*') ? 'text-green-500 ' : '' }}text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.portfolio') }}</a></li>
+                        <li><a href="/blog" wire:navigate class=" {{ request()->is('blog') || request()->is('post/*') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.blog') }}</a></li>
+                        <li><a href="/contact" wire:navigate class= "{{ request()->is('contact') ? 'text-green-500 ' : '' }} text-lg font-semibold hover:text-green-400 transition-colors duration-200">{{ __('messages.contact_us') }}</a></li>
 
                         <!-- Language Switcher for Mobile -->
                         @if (app()->getLocale() == 'ar')
 
                         <li class="language-switcher text-lg font-medium hover:text-green-500 transition-colors duration-200">
-                            <a href="locale/en" class="flex">
+                            <a wire:navigate href="locale/en" class="flex">
                                 <img class="w-5 mx-1" src="{{ asset('images/en.png') }}" alt="">
                                 EN
                             </a>
                         </li>
                         @else
                             <li class="language-switcher text-lg font-medium  hover:text-green-500 transition-colors duration-200">
-                                <a href="locale/ar" class=" flex">
+                                <a wire:navigate href="locale/ar" class=" flex">
                                     <img class="w-5 mx-1" src=" {{ asset('images/ar.png') }}" alt="">
                                     <span>AR</span>
                                 </a>
@@ -175,7 +175,7 @@
                             </li>
 
                             <li class=" mt-4 text-center text-lg font-semibold hover:text-green-400 transition-colors duration-200">
-                                <a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                                <a wire:navigate href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                                         {{ __('messages.profile') }}
                                 </a>
                             </li>
@@ -192,13 +192,13 @@
 
                             @else
                             <li class=" text-center text-lg font-semibold hover:text-green-400 transition-colors duration-200">
-                                <a href="{{ route('login') }}" >
+                                <a wire:navigate href="{{ route('login') }}" >
                                     {{ __('messages.login') }}
                                 </a>
                             </li>
 
                             <li class=" mt-4 text-center text-lg font-semibold hover:text-green-400 transition-colors duration-200">
-                                <a href="{{ route('register') }}">{{ __('messages.register') }}</a>
+                                <a wire:navigate href="{{ route('register') }}">{{ __('messages.register') }}</a>
                             </li>
                             @endauth
                         </section>

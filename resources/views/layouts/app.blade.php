@@ -54,6 +54,8 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+
+                @include('livewire.chat-widget')
             </main>
         </div>
 

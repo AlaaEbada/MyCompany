@@ -21,17 +21,34 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationLabel = 'Categories';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.post_management');
 
-    protected static ?string $navigationGroup = 'Blog Management';
+    }
 
+
+    public static function getModelLabel(): string
+    {
+        return __('messages.one_category');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('messages.categories');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('messages.categories');
+    }
 
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('Category Name')
+                    ->label(__('messages.category_name')) // Translated label
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
@@ -40,22 +57,23 @@ class CategoryResource extends Resource
                     }),
 
                 TextInput::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug')) // Translated label
                     ->unique(ignorable: fn ($record) => $record)
                     ->required()
                     ->maxLength(255)
-                    ->hint('Will be auto-generated if left blank'),
+                    ->hint(__('messages.slug_hint', [], 'en')), // You can add a translation for this hint if necessary
 
                 Textarea::make('description')
-                    ->label('Description')
+                    ->label(__('messages.description')) // Translated label
                     ->maxLength(500),
-                    // Color picker for text color
+
+                // Color picker for text color
                 ColorPicker::make('text_color')
-                ->label('Text Color'),
+                    ->label(__('messages.text_color')), // Translated label
 
                 // Color picker for background color
                 ColorPicker::make('bg_color')
-                    ->label('Background Color'),
+                    ->label(__('messages.bg_color')), // Translated label
             ]);
     }
 
@@ -64,22 +82,22 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label(__('id'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('name')
-                    ->label('Category Name')
+                    ->label(__('messages.category_name')) // Translated label
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug')) // Translated label
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label(__('messages.created_at')) // Translated label
                     ->dateTime(),
             ])
             ->filters([

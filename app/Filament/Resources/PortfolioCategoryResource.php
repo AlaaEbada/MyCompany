@@ -3,21 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PortfolioCategoryResource\Pages;
-use App\Filament\Resources\PortfolioCategoryResource\RelationManagers;
 use App\Models\PortfolioCategory;
 use Filament\Forms;
-use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Forms\Set;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PortfolioCategoryResource extends Resource
 {
@@ -25,17 +20,32 @@ class PortfolioCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationLabel = 'Categories';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.portfolio_management');
 
-    protected static ?string $navigationGroup = 'Portfolio Management';
+    }
 
+    public static function getModelLabel(): string
+    {
+        return __('messages.one_category');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('messages.categories');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('messages.categories');
+    }
 
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('Category Name')
+                    ->label(__('messages.category_name'))
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
@@ -44,16 +54,15 @@ class PortfolioCategoryResource extends Resource
                     }),
 
                 TextInput::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->unique(ignorable: fn ($record) => $record)
                     ->required()
                     ->maxLength(255)
-                    ->hint('Will be auto-generated if left blank'),
+                    ->hint(__('messages.slug_hint')),
 
                 Textarea::make('description')
-                    ->label('Description')
+                    ->label(__('messages.description'))
                     ->maxLength(500),
-
             ]);
     }
 
@@ -62,27 +71,27 @@ class PortfolioCategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label(__('id'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('name')
-                    ->label('Category Name')
+                    ->label(__('messages.category_name'))
                     ->sortable()
                     ->searchable(),
-                    
-                TextColumn::make('Description')
-                ->label('Category Description')
-                ->sortable()
-                ->searchable(),
+
+                TextColumn::make('description')
+                    ->label(__('messages.description'))
+                    ->sortable()
+                    ->searchable(),
 
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label(__('messages.created_at'))
                     ->dateTime(),
             ])
             ->filters([
@@ -99,9 +108,7 @@ class PortfolioCategoryResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

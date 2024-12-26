@@ -253,4 +253,45 @@ return [
     'technologies_used' => 'التقنيات المستخدمة',
     'related_projects' => 'المشاريع ذات الصلة',
 
+    'users' => 'المستخدمين',
+    'user_navigation_group' => 'إدارة المستخدمين',
+    'created_at' => 'تاريخ الإنشاء',
+    'role' => 'الدور',
+    'admin' => 'أدمن',
+    'user' => 'مستخدم',
+
+
+    'title' => 'العنوان',
+    'portfolio_management' => 'إدارة معرض الأعمال',
+    'portfolios' => 'الأعمال',
+    'project_title' => 'عنوان المشروع',
+    'project' => 'مشروع',
+    'slug' => 'الرابط',
+    'description' => 'الوصف',
+    'project_image' => 'صورة المشروع',
+    'category' => 'الفئة',
+    'created_at' => 'تاريخ الإنشاء',
+    'image' => 'الصورة',
+
+    'post_management' => 'إدارة المدونة',
+    'posts' => 'المقالات',
+    'post' => 'مقالة',
+    'post_title' => 'عنوان المقالة',
+    'content' => 'المحتوى',
+    'post_image' => 'صورة المقالة',
+    'author' => 'الكاتب',
+
+    'categories' => 'الفئات',
+    'one_category' => 'فئة',
+    'category_name' => 'اسم الفئة',
+    'slug' => 'الرابط',
+    'description' => 'الوصف',
+    'created_at' => 'تاريخ الإنشاء',
+
+    'messages' => 'الرسائل',
+    'submitted_at' => 'تاريخ الإرسال',
+
+    'text_color' => 'لون النص',
+    'bg_color' => 'لون الخلفية',
+
 ];

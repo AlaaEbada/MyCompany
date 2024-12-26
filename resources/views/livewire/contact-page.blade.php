@@ -1,12 +1,12 @@
 <div>
     <!-- Contact Section -->
     <!-- Hero Section for Contact Page -->
-    <x-hero-section title="{{ __('messages.contact_title') }}" subtitle="{{ __('messages.contact_us_description') }}" />
+    <x-hero-section title="{{ __('messages.contact_us') }}" subtitle="{{ __('messages.contact_us_description') }}" />
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-6 bg-gray-50 text-gray-900 relative">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-slide-up">{{ __('messages.contact_title') }}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-slide-up">{{ __('messages.contact_us') }}</h2>
 
             <!-- Success Message -->
             @if (session()->has('success'))

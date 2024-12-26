@@ -257,4 +257,46 @@ return [
     'technologies_used' => 'Technologies Used',
     'related_projects' => 'Related Projects',
 
+    //Dashboard
+
+    'users' => 'Users',
+    'user_navigation_group' => 'User Management',
+    'created_at' => 'Created At',
+    'role' => 'Role',
+    'admin' => 'Admin',
+    'user' => 'User',
+
+
+    'title' => 'Title',
+    'portfolio_management' => 'Portfolio Management',
+    'portfolios' => 'Portfolios',
+    'project_title' => 'Project Title',
+    'slug' => 'Slug',
+    'description' => 'Description',
+    'project_image' => 'Project Image',
+    'category' => 'Category',
+    'one_category' => 'Category',
+    'created_at' => 'Created At',
+    'image' => 'Image',
+
+
+    'post_management' => 'Blog Management',
+    'posts' => 'Posts',
+    'post' => 'Post',
+    'post_title' => 'Post Title',
+    'content' => 'Content',
+    'post_image' => 'Post Image',
+    'author' => 'Author',
+
+    'categories' => 'Categories',
+    'category_name' => 'Category Name',
+    'slug' => 'Slug',
+    'description' => 'Description',
+    'created_at' => 'Created At',
+
+    'messages' => 'Messages',
+    'submitted_at' => 'Submitted At',
+
+    'text_color' => 'Text Color',
+    'bg_color' => 'Background Color',
 ];

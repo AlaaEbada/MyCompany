@@ -122,7 +122,7 @@
                     {{ __('messages.create_something_amazing') }}
                 </p>
                 <a wire:navigate href="/contact" class="bg-gradient-to-r from-[#159957] to-[#155799] hover:from-[#155799] hover:to-[#159957] text-white px-8 py-3 rounded-lg text-lg shadow-lg transform transition duration-300 hover:scale-105">
-                    {{ __('messages.get_in_touch') }}
+                    {{ __('messages.contact_us') }}
                 </a>
             </div>
         </div>

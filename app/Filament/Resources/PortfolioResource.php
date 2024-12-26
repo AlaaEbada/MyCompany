@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PortfolioResource\Pages;
-use App\Filament\Resources\PortfolioResource\RelationManagers;
 use App\Models\Portfolio;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -11,15 +10,13 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Filament\Forms\Set;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PortfolioResource extends Resource
 {
@@ -27,16 +24,32 @@ class PortfolioResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Portfolios';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.portfolio_management');
 
-    protected static ?string $navigationGroup = 'Portfolio Management';
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('messages.portfolios');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('messages.project');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('messages.portfolio');
+    }
 
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->label('Project Title')
+                    ->label(__('messages.project_title'))
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
@@ -45,30 +58,28 @@ class PortfolioResource extends Resource
                     }),
 
                 TextInput::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->unique(ignorable: fn ($record) => $record)
                     ->required()
                     ->maxLength(255)
-                    ->hint('Will be auto-generated if left blank'),
+                    ->hint(__('messages.slug_hint')),
 
                 RichEditor::make('description')
-                    ->label('Description')
+                    ->label(__('messages.description'))
                     ->required()
                     ->dehydrateStateUsing(fn ($state) => strip_tags($state)),
 
                 FileUpload::make('image')
-                    ->label('Project Image')
+                    ->label(__('messages.project_image'))
                     ->image()
                     ->directory('portfolios')
                     ->required(),
 
                 Select::make('category_id')
-                    ->label('Category')
+                    ->label(__('messages.category'))
                     ->relationship('category', 'name')
                     ->required()
                     ->searchable(),
-
-
             ]);
     }
 
@@ -77,47 +88,47 @@ class PortfolioResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label(__('id'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('title')
-                    ->label('Title')
+                    ->label(__('messages.title'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('category.name')
-                    ->label('Category')
+                    ->label(__('messages.category'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label(__('messages.created_at'))
                     ->dateTime(),
 
                 ImageColumn::make('image')
-                ->label('Image')
-                ->width('50px')
-                ->height('50px')
-                ->getStateUsing(fn ($record) => asset('storage/' . $record->image)),
-
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make(),
-        ])->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+                    ->label(__('messages.image'))
+                    ->width('50px')
+                    ->height('50px')
+                    ->getStateUsing(fn ($record) => asset('storage/' . $record->image)),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
+
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

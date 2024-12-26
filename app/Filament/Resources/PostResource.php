@@ -3,73 +3,84 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Models\Category;
 use App\Models\Post;
-use Filament\Facades\Filament;
 use Filament\Forms;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Set;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    // Define the resource
-    protected static ?string $navigationLabel = 'Posts';
-
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
-    protected static ?string $navigationGroup = 'Blog Management';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.post_management');
+
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('messages.post');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('messages.posts');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('messages.posts');
+    }
+
+
 
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->label('Post Title')
+                    ->label(__('messages.post_title'))
                     ->required()
-                    ->maxLength(255) 
+                    ->maxLength(255)
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (Set $set, $state) {
                         $set('slug', Str::slug($state));
                     }),
 
                 TextInput::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->unique(ignorable: fn ($record) => $record)
                     ->required()
                     ->maxLength(255)
-                    ->hint('Will be auto-generated if left blank'),
+                    ->hint(__('messages.slug_hint')),
 
                 RichEditor::make('body')
-                    ->label('Content')
+                    ->label(__('messages.content'))
                     ->required()
                     ->dehydrateStateUsing(fn ($state) => strip_tags($state)),
 
                 FileUpload::make('image')
-                    ->label('Post Image')
+                    ->label(__('messages.post_image'))
                     ->image()
                     ->directory('posts')
                     ->required(),
 
                 Select::make('category_id')
-                    ->label('Category')
+                    ->label(__('messages.category'))
                     ->relationship('category', 'name')
                     ->required()
                     ->searchable(),
-
-
             ]);
     }
 
@@ -78,53 +89,52 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label(__('id'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('title')
-                    ->label('Title')
+                    ->label(__('messages.title'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('category.name')
-                    ->label('Category')
+                    ->label(__('messages.category'))
                     ->sortable()
                     ->searchable(),
 
-                    TextColumn::make('user.name')
-                    ->label('Auther')
+                TextColumn::make('user.name')
+                    ->label(__('messages.author'))
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label(__('messages.created_at'))
                     ->dateTime(),
 
                 ImageColumn::make('image')
-                ->label('Image')
-                ->width('50px')
-                ->height('50px')
-                ->getStateUsing(fn ($record) => asset('storage/' . $record->image)),
-
-        ])->actions([
-            Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make(),
-        ])->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+                    ->label(__('messages.image'))
+                    ->width('50px')
+                    ->height('50px')
+                    ->getStateUsing(fn ($record) => asset('storage/' . $record->image)),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            // You can add more relation managers if needed
-        ];
+        return [];
     }
 
     public static function getPages(): array
@@ -135,6 +145,4 @@ class PostResource extends Resource
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
-
-
 }

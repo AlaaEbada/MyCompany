@@ -14,29 +14,34 @@ class MessageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
-    protected static ?string $navigationLabel = 'Messages';
-
-    protected static ?string $pluralLabel = 'Messages';
+    public static function getPluralLabel(): ?string
+    {
+        return __('messages.messages');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('messages.messages');
+    }
 
     public static function table(Tables\Table $table): Tables\Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Name')
+                    ->label(__('messages.name')) // Translated label
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->label('Email')
+                    ->label(__('messages.email')) // Translated label
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('message')
-                    ->label('Message')
+                    ->label(__('messages.message')) // Translated label
                     ->limit(50)
                     ->wrap()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Submitted At')
+                    ->label(__('messages.submitted_at')) // Translated label
                     ->dateTime('F j, Y, g:i a')
                     ->sortable(),
             ])
@@ -44,7 +49,6 @@ class MessageResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-
             ])->headerActions([]); // Remove the "Create New" button
     }
 
