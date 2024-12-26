@@ -156,4 +156,105 @@ return [
     'click_here_to_resend_verification_email' => 'Click here to re-send the verification email.',
     'a_new_verification_link_has_been_sent' => 'A new verification link has been sent to your email address.',
 
+    'our_expertise' => 'Our Expertise',
+    'expertise_description' => 'We offer a range of professional services designed to drive success and innovation. Whether you\'re a small business or a large enterprise, we have the right solutions for you.',
+
+
+
+    //about
+
+    'about_us' => 'About Us',
+    'hero_subtitle' => 'Discover who we are and how we help businesses achieve success with innovative solutions.',
+    'who_we_are' => 'Who We Are',
+    'who_we_are_description' => 'We are a team of dedicated professionals passionate about creating innovative solutions to help businesses grow and thrive in a competitive landscape.',
+    'innovation' => 'Innovation',
+    'innovation_description' => 'We use cutting-edge technologies and creative strategies to deliver exceptional results.',
+    'commitment' => 'Commitment',
+    'commitment_description' => 'Our team is dedicated to meeting and exceeding client expectations every step of the way.',
+    'collaboration' => 'Collaboration',
+    'collaboration_description' => 'We believe in working closely with clients to create tailored solutions that achieve success.',
+    'our_journey' => 'Our Journey',
+    'milestone_1_title' => 'Founded in 2010',
+    'milestone_1_description' => 'Our company started with a mission to innovate and empower businesses.',
+    'milestone_2_title' => 'Achievements',
+    'milestone_2_description' => 'We’ve been recognized globally for our innovative and sustainable solutions.',
+    'milestone_3_title' => 'Global Presence',
+    'milestone_3_description' => 'Today, we serve clients across five continents.',
+    'ready_to_work' => 'Ready to Work With Us?',
+    'create_something_amazing' => 'Let’s create something amazing together.',
+    'get_in_touch' => 'Get in Touch',
+
+    // Our Services
+
+    'our_services' => 'Our Services',
+    'hero_subtitle_services' => 'Discover how we can help you achieve success with our innovative services.',
+    'our_expertise' => 'Our Expertise',
+    'services_description' => 'We offer a range of professional services designed to drive success and innovation. Whether you\'re a small business or a large enterprise, we have the right solutions for you.',
+    'custom_solutions' => 'Custom Solutions',
+    'custom_solutions_description' => 'We provide tailored solutions to address your unique business challenges and objectives.',
+    'business_strategy' => 'Business Strategy',
+    'business_strategy_description' => 'Our strategic services help you streamline operations and maximize business performance.',
+    'web_development' => 'Web Development',
+    'web_development_description' => 'We design and develop user-friendly websites that help businesses grow and engage their customers effectively.',
+    'ready_to_start' => 'Ready to Start Your Journey?',
+    'get_in_touch' => 'Get in touch with us today to learn how we can help you grow your business.',
+    'contact_us' => 'Contact Us',
+
+    //Portfolio
+
+    'our_portfolio' => 'Our Portfolio',
+    'portfolio_subtitle' => 'A Collection of Our Most Inspiring Projects',
+    'cta_heading' => 'Let’s Make Something Amazing Together',
+    'cta_description' => 'We would love to bring your ideas to life. Get in touch with us to start the journey.',
+    'contact_us' => 'Contact Us',
+
+    //blog
+
+    'blog_title' => 'Our Blog',
+    'blog_subtitle' => 'Explore our latest insights, stories, and industry news. Stay up-to-date with our thoughts and expertise.',
+    'filtered_by' => 'Filtered by:',
+    'read_more' => 'Read More',
+    'search_placeholder' => 'Search...',
+    'recommended_topics' => 'Recommended Topics',
+    'clear_filter' => 'Clear Filter',
+
+    //contact
+
+    'contact_title' => 'Get in Touch',
+    'contact_us_description' => 'We would love to hear from you. Whether you have a question or need more information, feel free to reach out.',
+    'name' => 'Name',
+    'email' => 'Email',
+    'message' => 'Message',
+    'send_message' => 'Send Message',
+    'sending' => 'Sending...',
+    'success' => 'Your message has been sent successfully!',
+
+    //Single Post
+
+    'category' => 'Category',
+    'posted_on' => 'Posted on:',
+    'comments' => 'Comments',
+    'back_to_blog' => 'Back to Blog',
+    'related_posts' => 'Related Posts',
+
+    //Comment Section
+
+    'comment_placeholder' => 'Comment Something Here',
+    'comment' => 'Comment',
+    'all_comments' => 'All Comments',
+    'reply' => 'Reply',
+    'delete' => 'Delete',
+    'submit_reply' => 'Submit Reply',
+    'close_reply' => 'Close Reply',
+    'comment_success' => 'Your comment has been posted successfully!',
+    'comment_error' => 'There was an error posting your comment.',
+
+    //Single Portfolio
+
+    'back_to_portfolio' => 'Back to Portfolio',
+    'category' => 'Category :',
+    'created_on' => 'Created on :',
+    'technologies_used' => 'Technologies Used',
+    'related_projects' => 'Related Projects',
+
 ];

@@ -153,4 +153,104 @@ return [
     'click_here_to_resend_verification_email' => 'اضغط هنا لإعادة إرسال بريد التحقق.',
     'a_new_verification_link_has_been_sent' => 'تم إرسال رابط التحقق الجديد إلى عنوان بريدك الإلكتروني.',
 
+    'our_expertise' => 'خبراتنا',
+    'expertise_description' => 'نحن نقدم مجموعة من الخدمات المهنية المصممة لتحقيق النجاح والابتكار. سواء كنت صاحب عمل صغير أو مؤسسة كبيرة، لدينا الحلول المناسبة لك.',
+
+
+    // About
+
+    'about_us' => 'من نحن',
+    'hero_subtitle' => 'اكتشف من نحن وكيف نساعد الشركات على تحقيق النجاح من خلال حلول مبتكرة.',
+    'who_we_are' => 'من نحن',
+    'who_we_are_description' => 'نحن فريق من المهنيين المكرسين والشغوفين بابتكار حلول لمساعدة الشركات على النمو والازدهار في بيئة تنافسية.',
+    'innovation' => 'الابتكار',
+    'innovation_description' => 'نستخدم أحدث التقنيات والاستراتيجيات الإبداعية لتقديم نتائج استثنائية.',
+    'commitment' => 'الالتزام',
+    'commitment_description' => 'يلتزم فريقنا بتلبية وتجاوز توقعات العملاء في كل خطوة.',
+    'collaboration' => 'التعاون',
+    'collaboration_description' => 'نؤمن بالعمل عن كثب مع العملاء لخلق حلول مخصصة تحقق النجاح.',
+    'our_journey' => 'رحلتنا',
+    'milestone_1_title' => 'تأسست في 2010',
+    'milestone_1_description' => 'بدأت شركتنا بمهمة الابتكار وتمكين الشركات.',
+    'milestone_2_title' => 'الإنجازات',
+    'milestone_2_description' => 'تم الاعتراف بنا عالميًا لحلولنا المبتكرة والمستدامة.',
+    'milestone_3_title' => 'الحضور العالمي',
+    'milestone_3_description' => 'اليوم، نخدم العملاء عبر خمس قارات.',
+    'ready_to_work' => 'هل أنت مستعد للعمل معنا؟',
+    'create_something_amazing' => 'دعونا نبتكر شيئًا رائعًا معًا.',
+    'get_in_touch' => 'تواصل معنا',
+
+    //Our Services
+
+    'our_services' => 'خدماتنا',
+    'hero_subtitle_services' => 'اكتشف كيف يمكننا مساعدتك على تحقيق النجاح من خلال خدماتنا المبتكرة.',
+    'our_expertise' => 'خبراتنا',
+    'services_description' => 'نقدم مجموعة من الخدمات المهنية المصممة لتحقيق النجاح والابتكار. سواء كنت شركة صغيرة أو مؤسسة كبيرة، لدينا الحلول المناسبة لك',
+    'custom_solutions' => 'حلول مخصصة',
+    'custom_solutions_description' => 'نقدم حلولًا مخصصة لمعالجة تحديات وأهداف عملك الفريدة',
+    'business_strategy' => 'استراتيجية الأعمال',
+    'business_strategy_description' => 'تساعدك خدماتنا الاستراتيجية على تحسين العمليات وزيادة أداء عملك',
+    'web_development' => 'تطوير الويب',
+    'web_development_description' => 'نصمم ونطور مواقع ويب سهلة الاستخدام تساعد الشركات على النمو والتواصل الفعّال مع العملاء',
+    'ready_to_start' => 'هل أنت مستعد للبدء؟',
+    'get_in_touch' => 'تواصل معنا اليوم لتعرف كيف يمكننا مساعدتك على تنمية عملك',
+    'contact_us' => 'تواصل معنا',
+
+    //Portfolio
+
+    'our_portfolio' => 'معرض أعمالنا',
+    'portfolio_subtitle' => 'مجموعة من أبرز مشاريعنا الملهمة',
+    'cta_heading' => 'دعونا نخلق شيئًا رائعًا معًا',
+    'cta_description' => 'يسعدنا تحويل أفكارك إلى واقع. تواصل معنا لبدء الرحلة',
+    'contact_us' => 'تواصل معنا',
+
+    //blog
+
+    'blog_title' => 'مدونتنا',
+    'blog_subtitle' => 'استكشف أحدث الأفكار والقصص وأخبار الصناعة. تابع أفكارنا وخبراتنا.',
+    'filtered_by' => 'مفلتر بواسطة:',
+    'read_more' => 'اقرأ المزيد',
+    'search_placeholder' => 'بحث...',
+    'recommended_topics' => 'الموضوعات الموصى بها',
+    'clear_filter' => 'مسح الفلتر',
+
+    //contact
+
+    'contact_title' => 'اتصل بنا',
+    'contact_us_description' => 'نحن نحب سماع رأيك. سواء كان لديك سؤال أو كنت بحاجة إلى مزيد من المعلومات، لا تتردد في التواصل معنا.',
+    'name' => 'الاسم',
+    'email' => 'البريد الإلكتروني',
+    'message' => 'الرسالة',
+    'send_message' => 'إرسال الرسالة',
+    'sending' => 'جاري الإرسال...',
+    'success' => 'تم إرسال رسالتك بنجاح!',
+
+    //Single Post
+
+    'category' => 'الفئة',
+    'posted_on' => 'تم النشر في:',
+    'comments' => 'التعليقات',
+    'back_to_blog' => 'العودة إلى المدونة',
+    'related_posts' => 'المنشورات ذات الصلة',
+
+    //comment Section
+
+    'comment_placeholder' => 'علق شيئًا هنا',
+    'comment' => 'علق',
+    'all_comments' => 'جميع التعليقات',
+    'reply' => 'رد',
+    'delete' => 'حذف',
+    'submit_reply' => 'إرسال الرد',
+    'close_reply' => 'إغلاق الرد',
+    'comment_success' => 'تم نشر تعليقك بنجاح!',
+    'comment_error' => 'حدث خطأ أثناء نشر تعليقك.',
+
+    //Single Portfolio
+
+    'back_to_portfolio' => 'الرجوع إلى معرض الأعمال',
+    'category' => 'الفئة :',
+    'created_on' => 'تم الإنشاء في :',
+    'technologies_used' => 'التقنيات المستخدمة',
+    'related_projects' => 'المشاريع ذات الصلة',
+
 ];

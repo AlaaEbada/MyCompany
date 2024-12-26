@@ -11,81 +11,24 @@
     </style>
 
     <!-- Blog Page Hero Section -->
-    <x-hero-section title="Our Blog"
-        subtitle="Explore our latest insights, stories, and industry news. Stay up-to-date with our thoughts and expertise." />
+    <x-hero-section title="{{ __('messages.blog_title') }}"
+        subtitle="{{ __('messages.blog_subtitle') }}" />
 
     <section id="blog" class="py-20 px-6 bg-gray-50">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12">
-            <!-- Blog Posts Column (Left) -->
-            <div class="col-span-3">
-                <!-- Show Selected Category -->
+        <div class="max-w-7xl mx-5 md:mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12 ">
 
-                @if ($selectedCategory)
-                @php
-                    $category = $this->categories->firstWhere('id', $selectedCategory);
-                @endphp
-
-                @if ($category)
-                    <div class="mb-4 flex items-center justify-between bg-primary-light p-3 rounded-md">
-                        <span>Filtered by:</span>
-                        <span class="p-1 px-3 rounded-md" style="background-color: {{ $category->bg_color }}; color: {{ $category->text_color }}">
-                            {{ $category->name }}
-                            <button wire:click="removeCategoryFilter" class="bg-transparent hover:bg-primary-dark p-1 rounded-full">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </span>
-                    </div>
-                @endif
-            @endif
-
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                    @foreach ($this->posts as $post)
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl hover:scale-105 transition duration-300">
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="Blog Post Image" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-900 mb-4 break-words">
-                                {{ $post->title }}
-                            </h3>
-                            <p class="text-gray-600 mb-4 break-words line-clamp-3">
-                                {{ \Str::limit($post->body, 150) }}
-                            </p>
-
-                            <div class="flex justify-between">
-                                <!-- Like Button with Heart Icon -->
-                                <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2">
-                                    <i class="fa fa-heart {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
-                                    <span class="text-lg">{{ $post->likes->count() }}</span>
-                                </button>
-
-                                <a wire:navigate href="{{ route('post.show', ['slug' => $post->slug]) }}"
-                                    class="text-primary-light font-semibold hover:text-primary transition duration-300">
-                                    Read More
-                                </a>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-                <div class="mt-10">
-                    {{ $this->posts->links(data: ['scrollTo' => false]) }}
-                </div>
-            </div>
 
             <!-- Sidebar Column (Right) -->
-            <div class="col-span-1 bg-white rounded-lg shadow-md p-6">
+            <div class="col-span-3 md:col-span-1 bg-white rounded-lg shadow-md p-6">
                 <!-- Search Section -->
                 <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4">Search</h4>
-                    <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search..." class="w-full p-2 border rounded-md">
+                    <h4 class="text-xl font-semibold mb-4">{{ __('messages.search_placeholder') }}</h4>
+                    <input wire:model.live.debounce.300ms="search" type="text" placeholder="{{ __('messages.search_placeholder') }}" class="w-full p-2 border rounded-md">
                 </div>
 
                 <!-- Categories Section -->
                 <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4">Recommended Topics</h4>
+                    <h4 class="text-xl font-semibold mb-4">{{ __('messages.recommended_topics') }}</h4>
                     <ul class="flex flex-wrap">
                         @foreach ($this->categories as $category)
                             <li class="mx-1 my-1">
@@ -100,6 +43,70 @@
                     </ul>
                 </div>
 
+                <!-- Clear Filter Button -->
+                @if ($selectedCategory)
+                    <div class="mt-4">
+                        <button wire:click="removeCategoryFilter" class="text-red-500 hover:text-red-700">
+                            {{ __('messages.clear_filter') }}
+                        </button>
+                    </div>
+                @endif
+            </div>
+
+             <!-- Blog Posts Column (Left) -->
+             <div class="col-span-3">
+                <!-- Show Selected Category -->
+                @if ($selectedCategory)
+                    @php
+                        $category = $this->categories->firstWhere('id', $selectedCategory);
+                    @endphp
+
+                    @if ($category)
+                        <div class="mb-4 flex items-center justify-between bg-primary-light p-3 rounded-md">
+                            <span>{{ __('messages.filtered_by') }}</span>
+                            <span class="p-1 px-3 rounded-md" style="background-color: {{ $category->bg_color }}; color: {{ $category->text_color }}">
+                                {{ $category->name }}
+                                <button wire:click="removeCategoryFilter" class="bg-transparent hover:bg-primary-dark p-1 rounded-full">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </span>
+                        </div>
+                    @endif
+                @endif
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    @foreach ($this->posts as $post)
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl hover:scale-105 transition duration-300">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="Blog Post Image" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4 break-words">
+                                    {{ $post->title }}
+                                </h3>
+                                <p class="text-gray-600 mb-4 break-words line-clamp-3">
+                                    {{ \Str::limit($post->body, 150) }}
+                                </p>
+
+                                <div class="flex justify-between">
+                                    <!-- Like Button with Heart Icon -->
+                                    <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2 space-x-reverse">
+                                        <i class="fa fa-heart {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
+                                        <span class="text-lg">{{ $post->likes->count() }}</span>
+                                    </button>
+
+                                    <a wire:navigate href="{{ route('post.show', ['slug' => $post->slug]) }}"
+                                        class="text-primary-light font-semibold hover:text-primary transition duration-300">
+                                        {{ __('messages.read_more') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-10">
+                    {{ $this->posts->links() }}
+                </div>
             </div>
         </div>
     </section>

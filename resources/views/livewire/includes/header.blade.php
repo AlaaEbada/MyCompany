@@ -65,14 +65,14 @@
                     @if (Auth::check() && Auth::user()->is_admin == '1')
                         <a href="/admin"
                             class="text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200 {{ request()->is('admin') ? 'text-green-500' : '' }}">
-                            Dashboard
+                            {{__('messages.dashboard')}}
                         </a>
                     @endif
-                    <div class="hidden sm:flex items-center space-x-3">
+                    <div class="hidden sm:flex items-center space-x-3 font-medium">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-gray-800 text-1xl leading-4 font-medium rounded-md hover:text-green-500 focus:outline-none transition ease-in-out duration-150">
                                     <span>{{ Auth::user()->name }}</span>
                                     <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                         fill="currentColor">
@@ -84,13 +84,15 @@
                             </x-slot>
                             <x-slot name="content">
                                 <x-dropdown-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                                    {{ __('Profile') }}
+                                    {{ __('messages.profile') }}
+
                                 </x-dropdown-link>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit"
-                                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                        {{ __('Log Out') }}
+                                        class="block w-full text-left rtl:text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        {{ __('messages.logout') }}
+
                                     </button>
                                 </form>
                             </x-slot>
@@ -99,12 +101,14 @@
                 @else
                     <a wire:navigate href="{{ route('login') }}"
                         class="text-base font-medium text-black px-4 py-2 border border-transparent rounded hover:text-gray-600 focus-visible:ring focus-visible:ring-green-500">
-                        Log in
+                        {{ __('messages.login') }}
+
                     </a>
                     @if (Route::has('register'))
                         <a wire:navigate href="{{ route('register') }}"
                             class="text-base font-medium text-black px-4 py-2 border border-transparent rounded hover:text-gray-600 focus-visible:ring focus-visible:ring-green-500">
-                            Register
+                            {{ __('messages.register') }}
+
                         </a>
                     @endif
                 @endauth

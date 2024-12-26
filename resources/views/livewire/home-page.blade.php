@@ -54,9 +54,9 @@
     <!-- Services Section -->
     <section id="services" class="py-20 px-6 content-center relative">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Our Expertise</h2>
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-12">{{__('messages.our_expertise')}}</h2>
             <p class="text-lg md:text-xl text-gray-800 mb-8 leading-relaxed">
-                We offer a range of professional services designed to drive success and innovation. Whether you're a small business or a large enterprise, we have the right solutions for you.
+                {{__('messages.expertise_description')}}
             </p>
 
             <!-- Services Grid -->

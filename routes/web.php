@@ -25,5 +25,8 @@ Route::get('/blog', BlogPage::class)->name('blog');
 Route::get('/post/{slug}', SinglePost::class)->name('post.show');
 Route::get('/portfolio/{slug}', SinglePortfolio::class)->name('portfolio.show');
 
+//Lang Switcher
 Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
 Route::get('user/locale/{lang}', [LocaleController::class, 'setLocale']);
+Route::get('post/locale/{lang}', [LocaleController::class, 'setLocale']);
+Route::get('portfolio/locale/{lang}', [LocaleController::class, 'setLocale']);

@@ -3,7 +3,7 @@
         <!-- About Section -->
         <div class="flex flex-col items-center sm:items-start space-y-4 text-center">
             <h3 class="text-lg font-semibold text-green-600">Media Sharks</h3>
-            <p class="text-gray-600 leading-7">{{ __('messages.about-description') }}</p>
+            <p class="text-gray-600 leading-7 text-center lg:text-left rtl:lg:text-right">{{ __('messages.about-description') }}</p>
             <div class="flex space-x-4 justify-center sm:justify-start rtl:space-x-reverse">
                 <a href="#" class="text-gray-500 hover:text-green-600"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-gray-500 hover:text-green-600"><i class="fab fa-instagram"></i></a>
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Company Links -->
-        <div class="space-y-4 text-center lg:text-right">
+        <div class="space-y-4 text-center lg:text-left lg:rtl:text-right">
             <h3 class="text-lg font-semibold text-green-600">{{ __('messages.company-heading') }}</h3>
             <ul class="space-y-2 rtl:space-x-reverse">
                 <li><a wire:navigate href="/" class="text-gray-600 hover:text-green-600">{{ __('messages.home') }}</a></li>
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Support Links -->
-        <div class="space-y-4 text-center lg:text-right">
+        <div class="space-y-4 text-center lg:text-left lg:rtl:text-right">
             <h3 class="text-lg font-semibold text-green-600">{{ __('messages.support-heading') }}</h3>
             <ul class="space-y-2">
                 <li><a wire:navigate href="/contact" class="text-gray-600 hover:text-green-600">{{ __('messages.contact_us') }}</a></li>
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Contact Section -->
-        <div class="space-y-4 text-center lg:text-right">
+        <div class="space-y-4 text-center lg:text-left lg:rtl:text-right">
             <h3 class="text-lg font-semibold text-green-600">{{ __('messages.contact_us') }}</h3>
             <div class="space-y-3 text-gray-600">
                 <p class="flex items-center space-x-2 rtl:space-x-reverse justify-center sm:justify-start">
