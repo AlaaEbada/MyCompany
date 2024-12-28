@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Livewire\AboutPage;
 use App\Livewire\BlogPage;
 use App\Livewire\ContactPage;
@@ -10,6 +11,11 @@ use App\Livewire\SinglePortfolio;
 use App\Livewire\SinglePost;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/dashboard', function () {
+    return redirect('/admin');
+})->name('dashboard');
+
 Route::get('/', HomePage::class);
 Route::get('/about-us', AboutPage::class);
 Route::get('/portfolio', PortfolioPage::class)->name('portfolioPage');
@@ -19,9 +25,8 @@ Route::get('/blog', BlogPage::class)->name('blog');
 Route::get('/post/{slug}', SinglePost::class)->name('post.show');
 Route::get('/portfolio/{slug}', SinglePortfolio::class)->name('portfolio.show');
 
-
-Route::get('/dashboard', function () {
-        return redirect('/admin');
-    })->name('dashboard');
-
-
+//Lang Switcher
+Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
+Route::get('user/locale/{lang}', [LocaleController::class, 'setLocale']);
+Route::get('post/locale/{lang}', [LocaleController::class, 'setLocale']);
+Route::get('portfolio/locale/{lang}', [LocaleController::class, 'setLocale']);

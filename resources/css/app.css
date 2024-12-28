@@ -1,4 +1,5 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,3 +9,53 @@
 [x-cloak] {
     display: none;
 }
+
+* {
+    font-family: 'Cairo', sans-serif;
+}
+
+@media (max-width : 1000px) {
+    header
+    {
+        direction: ltr;
+    }
+}
+
+/* html[lang="ar"] .align-ar {
+    text-align: right;
+}
+ */
+
+
+
+ /*     Scroll Bar Customize  */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+    background-color: #2c3e50; /* Darker background */
+    border-radius: 10px;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #16A34A; /* Blue color */
+    border-radius: 10px;
+}
+
+/* Change the thumb color when hovered */
+::-webkit-scrollbar-thumb:hover {
+    background-color:#16A34A; /* Darker blue when hovered */
+}
+
+
+
+
+
+
+
+
+

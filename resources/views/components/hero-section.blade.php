@@ -1,4 +1,4 @@
-<section class="bg-gradient-to-r from-[#159957] to-[#155799] text-white py-20 px-6 relative">
+<section class="bg-gradient-to-r from-[#159957] to-[#155799] text-white py-12 md:py-20 px-6  relative">
     <div class="max-w-7xl mx-auto text-center">
         @if(isset($title))
 
@@ -16,4 +16,4 @@
         @endif
 
     </div>
-</section>  
+</section>

@@ -3,7 +3,7 @@
     <x-hero-section title="{{ $post->title }}" />
 
     <!-- Single Post Content -->
-    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-20">
+    <div class="mx-5 max-w-4xl md:mx-auto bg-white shadow-lg rounded-lg overflow-hidden my-8 sm:my-12 lg:my-20">
 
         <!-- Post Image -->
         @if ($post->image)
@@ -13,55 +13,55 @@
         @endif
 
         <!-- Post Title and Meta Info -->
-        <div class="px-8 py-10">
-            <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">{{ $post->title }}</h1>
+        <div class="px-4 sm:px-8 py-6 sm:py-10">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">{{ $post->title }}</h1>
 
             <!-- Category and Date -->
-            <div class="flex items-center text-gray-500 text-sm mb-8 space-x-6">
+            <div class="flex flex-wrap items-center text-gray-500 text-sm mb-8 space-x-4 sm:space-x-6">
                 <span class="flex items-center space-x-2">
-                    <strong class="text-gray-700">Category:</strong>
+                    <strong class="text-gray-700">{{ __('messages.category') }}:</strong>
                     <span>{{ $post->category->name }}</span>
                 </span>
                 <span class="flex items-center space-x-2">
-                    <strong class="text-gray-700">Posted on:</strong>
+                    <strong class="text-gray-700">{{ __('messages.posted_on') }}</strong>
                     <span>{{ $post->created_at->format('F j, Y') }}</span>
                 </span>
             </div>
 
             <!-- Post Body -->
-            <div class="text-gray-700 leading-relaxed text-lg mb-10">
+            <div class="text-gray-700 leading-relaxed text-lg mb-6 sm:mb-10">
                 {!! nl2br(e($post->body)) !!}
             </div>
 
             <!-- Like Button with Heart Icon -->
-            <div class="flex items-center justify-between mb-10">
-                <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2 group">
+            <div class="flex items-center justify-between mb-8 sm:mb-10">
+                <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2 rtl:space-x-reverse group">
                     <i class="fa fa-heart text-xl transition {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400 group-hover:text-red-500' }}"></i>
                     <span class="text-lg font-semibold text-gray-700 group-hover:text-red-500">
                         {{ $post->likes->count() }}
                     </span>
                 </button>
                 <a wire:navigate href="{{ route('blog') }}" class="inline-block bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition duration-300">
-                    Back to Blog
+                    {{ __('messages.back_to_blog') }}
                 </a>
             </div>
         </div>
     </div>
 
     <!-- Comment Section -->
-    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-16">
-        <h2 class="text-3xl font-semibold text-gray-900 mb-6 border-b-2 pb-2">Comments</h2>
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-8 mt-12 sm:mt-16">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-6 border-b-2 pb-2">{{ __('messages.comments') }}</h2>
 
         <!-- Livewire Comment Section -->
         @livewire('comment-section', ['post_id' => $post->id])
     </div>
 
     <!-- Related Posts Section -->
-    <div class="max-w-4xl mx-auto mt-16 pb-6">
-        <h2 class="text-3xl font-semibold text-gray-900 mb-8">Related Posts</h2>
+    <div class="mx-5 max-w-4xl md:mx-auto mt-12 sm:mt-16 pb-6">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8">{{ __('messages.related_posts') }}</h2>
 
         @if($relatedPosts)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($relatedPosts as $relatedPost)
                     <div class="bg-white shadow-lg rounded-lg hover:shadow-xl transition">
                         <a href="{{ route('post.show', $relatedPost->slug) }}" class="block">

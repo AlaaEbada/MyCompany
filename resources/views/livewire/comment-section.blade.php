@@ -21,16 +21,16 @@
             @csrf
             <div class="form-group">
                 <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
-                        wire:model="comment" rows="3" placeholder="Comment Something Here" required></textarea>
+                        wire:model="comment" rows="3" placeholder="{{ __('messages.comment_placeholder') }}" required></textarea>
             </div>
-            <button type="submit" class="hover:bg-green-700 bg-green-600 text-white py-2 px-4 rounded-lg">Comment</button>
+            <button type="submit" class="hover:bg-green-700 bg-green-600 text-white py-2 px-4 rounded-lg">{{ __('messages.comment') }}</button>
         </form>
     </div>
 
     <!-- Conditionally render the comments section if there are comments -->
     @if ($comments->isNotEmpty())
         <div class="container pb-5">
-            <h2 class="pb-4 text-2xl font-bold text-gray-800">All Comments</h2>
+            <h2 class="pb-4 text-2xl font-bold text-gray-800">{{ __('messages.all_comments') }}</h2>
 
             @foreach ($comments as $comment)
                 <div class="card mb-3 p-4 border border-gray-300 rounded-lg shadow-sm hover:shadow-lg">
@@ -39,10 +39,10 @@
                         <p>{{ $comment->comment }}</p>
 
                         <!-- Button to show reply form -->
-                        <a href="javascript:void(0);" wire:click="toggle_reply_form({{ $comment->id }})" class="text-green-700">Reply</a>
+                        <a href="javascript:void(0);" wire:click="toggle_reply_form({{ $comment->id }})" class="text-green-700">{{ __('messages.reply') }}</a>
 
                         <!-- Delete Button for Comment -->
-                        <button wire:click="commentDelete({{ $comment->id }})" class="text-red-500 text-sm ml-4">Delete</button>
+                        <button wire:click="commentDelete({{ $comment->id }})" class="text-red-500 text-sm ml-4 mx-2">{{ __('messages.delete') }}</button>
 
                         <!-- Reply Section -->
                         @foreach ($replies as $reply)
@@ -52,10 +52,10 @@
                                     <p>{{ $reply->reply }}</p>
 
                                     <!-- Button to show reply form for this reply -->
-                                    <a href="javascript:void(0);" wire:click="toggle_reply_form({{ $comment->id }})" class="text-green-700">Reply</a>
+                                    <a href="javascript:void(0);" wire:click="toggle_reply_form({{ $comment->id }})" class="text-green-700">{{ __('messages.reply') }}</a>
 
                                     <!-- Delete Button for Reply -->
-                                    <button wire:click="replyDelete({{ $reply->id }})" class="text-red-500 text-sm ml-4">Delete</button>
+                                    <button wire:click="replyDelete({{ $reply->id }})" class="text-red-500 text-sm mx-2 ">{{ __('messages.delete') }}</button>
                                 </div>
                             @endif
                         @endforeach
@@ -66,10 +66,10 @@
                                 @csrf
 
                                 <textarea class="form-control w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600"
-                                        wire:model="reply" rows="3" placeholder="Write a reply here..." required></textarea>
+                                        wire:model="reply" rows="3" placeholder="{{ __('messages.submit_reply') }}" required></textarea>
 
-                                <button type="submit" class=" bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-2">Submit Reply</button>
-                                <span wire:click="close_reply_form" class="bg-red-500 text-white p-2 rounded-lg mt-2 cursor-pointer">Close Reply</span>
+                                <button type="submit" class=" bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-2">{{ __('messages.submit_reply') }}</button>
+                                <span wire:click="close_reply_form" class="bg-red-500 text-white p-2 rounded-lg mt-2 cursor-pointer">{{ __('messages.close_reply') }}</span>
                             </form>
                         @endif
                     </div>

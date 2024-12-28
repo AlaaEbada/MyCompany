@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Load Cairo font for Arabic -->
+        @if (app()->getLocale() == 'ar')
+            <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+
+        @endif
+
         <link rel="icon" type="image/png" sizes="16x16" href="/images/mediaSharks1.png">
 
 
@@ -18,6 +25,8 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <script>
             // Tp remove the dark mood
@@ -45,6 +54,8 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+
+                @include('livewire.chat-widget')
             </main>
         </div>
 
