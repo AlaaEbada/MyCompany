@@ -43,7 +43,8 @@ window.addEventListener('DeleteConfirm', (event) => {
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#33cc33',
-        confirmButtonText: 'Yes',
+        cancelButtonText: data.no,
+        confirmButtonText: data.yes,
     }).then((result) => {
         if (result.isConfirmed) {
             Livewire.dispatch('commentConfirmAction', { id: data.id });
@@ -66,7 +67,8 @@ window.addEventListener('DeleteConfirm2', (event) => {
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#33cc33',
-        confirmButtonText: 'Yes',
+        cancelButtonText: data.no,
+        confirmButtonText: data.yes,
     }).then((result) => {
         if (result.isConfirmed) {
             Livewire.dispatch('replyConfirmAction', { id: data.id });

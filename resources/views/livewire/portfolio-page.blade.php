@@ -11,12 +11,6 @@
                 @foreach ($portfolios as $portfolio)
                     <!-- Portfolio Item -->
                     <a wire:navigate href="{{ route('portfolio.show', ['slug' => $portfolio->slug]) }}"
-                    class="group relative bg-gray-100 rounded-lg shadow-lg overflow-hidden block h-60">
-                        <img src="storage/{{$portfolio->image}}" alt="Project 1" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition"></div>
-                        <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <h3 class="text-2xl font-semibold text-white mb-2">{{$portfolio->title}}</h3>
-                            <span class="text-lg text-white">{{$portfolio->category->name}}</span>
                         class="group relative bg-gray-100 rounded-lg shadow-lg overflow-hidden block h-60">
                         <img src="storage/{{ $portfolio->image }}" alt="{{ $portfolio->title }}"
                             class="w-full h-full object-cover">
@@ -26,7 +20,7 @@
                         <div
                             class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 text-left">
                             <h3 class="text-2xl font-semibold text-white mb-2">{{ $portfolio->title }}</h3>
-                            <span class="text-lg text-white">{{ $portfolio->Category->name }}</span>
+                            <span class="text-lg text-white">{{ $portfolio->category->name }}</span>
                         </div>
                     </a>
                 @endforeach

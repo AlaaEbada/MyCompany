@@ -47,7 +47,7 @@
                         <!-- Reply Section -->
                         @foreach ($replies as $reply)
                             @if ($reply->comment_id == $comment->id)
-                                <div class="reply mt-3 pl-5 border-l-2 border-gray-300">
+                                <div class="reply mt-3 pl-5 rtl:pr-5 border-l-2 rtl:border-l-0 rtl:border-r-2 border-gray-300">
                                     <b>{{ $reply->name }}</b>
                                     <p>{{ $reply->reply }}</p>
 

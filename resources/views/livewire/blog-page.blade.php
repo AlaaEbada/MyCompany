@@ -17,6 +17,7 @@
     <section id="blog" class="py-20 px-6 bg-gray-50">
         <div class="max-w-7xl mx-5 md:mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12 ">
 
+            
 
             <!-- Sidebar Column (Right) -->
             <div class="col-span-3 md:col-span-1 bg-white rounded-lg shadow-md p-6">
@@ -53,8 +54,8 @@
                 @endif
             </div>
 
-             <!-- Blog Posts Column (Left) -->
-             <div class="col-span-3">
+            <!-- Blog Posts Column (Left) -->
+            <div class="col-span-3">
                 <!-- Show Selected Category -->
                 @if ($selectedCategory)
                     @php
@@ -89,7 +90,7 @@
                                 <div class="flex justify-between">
                                     <!-- Like Button with Heart Icon -->
                                     <button wire:click="likePost({{ $post->id }})" class="flex items-center space-x-2 space-x-reverse">
-                                        <i class="fa fa-heart {{ $this->userHasLiked($post->id) ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
+                                        <i class="fa fa-heart {{ $post->user_liked ? 'text-red-500' : 'text-gray-400' }} text-xl"></i>
                                         <span class="text-lg">{{ $post->likes->count() }}</span>
                                     </button>
 

@@ -36,9 +36,9 @@ class CommentSection extends Component
                 $this->comment = '';
 
 
-                session()->flash('message', 'Comment added successfully!');
+                session()->flash('message', __('messages.comment_added'));
             } else {
-                session()->flash('error', 'Comment cannot be empty!');
+                session()->flash('error', __('messages.comment_empty'));
             }
         } else {
             return redirect()->route('login');
@@ -61,9 +61,9 @@ class CommentSection extends Component
 
                 $this->reply = '';
 
-                session()->flash('message', 'Reply added successfully!');
+                session()->flash('message', __('messages.reply_added'));
             } else {
-                session()->flash('error', 'Reply cannot be empty!');
+                session()->flash('message', __('messages.reply_empty'));
             }
         } else {
             return redirect()->route('login');
@@ -100,16 +100,16 @@ class CommentSection extends Component
         $comment = Comment::find($id);
         if ($comment) {
             $comment->delete();
-            $this->dispatch('alert', type: 'success', title: 'Comment deleted successfully!');
+            $this->dispatch('alert', type: 'success', title:  __('messages.comment_deleted'));
         } else {
-            $this->dispatch('alert', type: 'error', title: 'Comment not found!');
+            $this->dispatch('alert', type: 'error', title:  __('messages.comment_not_found'));
         }
     }
 
     #[On('commentActionCancel')]
     public function commentCancelAction($id)
     {
-        $this->dispatch('alert', type: 'info', title: 'Action canceled.');
+        $this->dispatch('alert', type: 'info', title: __('messages.action_canceld'));
     }
 
     public function commentDelete($id)
@@ -119,8 +119,10 @@ class CommentSection extends Component
             $this->dispatch(
                 'DeleteConfirm',
                 type: 'warning',
-                title: 'Confirm Deletion',
-                message: 'Are you sure you want to delete this comment?',
+                title: __('messages.alert_title'),
+                message: __('messages.confirm_deletion_comment'),
+                yes:__('messages.yes'), 
+                no:__('messages.no'),
                 id: $id
             );
         } else {
@@ -139,8 +141,10 @@ class CommentSection extends Component
             $this->dispatch(
                 'DeleteConfirm2',
                 type: 'warning',
-                title: 'Confirm Deletion',
-                message: 'Are you sure you want to delete this Reply?',
+                title: __('messages.alert_title'),
+                message:  __('messages.confirm_deletion_reply'),
+                yes:__('messages.yes'), 
+                no:__('messages.no'),
                 id: $id
             );
         } else {
@@ -154,16 +158,16 @@ class CommentSection extends Component
         $reply = Reply::find($id);
         if ($reply) {
             $reply->delete();
-            $this->dispatch('alert', type: 'success', title: 'Reply deleted successfully!');
+            $this->dispatch('alert', type: 'success', title:  __('messages.reply_deleted'));
         } else {
-            $this->dispatch('alert', type: 'error', title: 'Reply not found!');
+            $this->dispatch('alert', type: 'error', title: __('messages.reply_not_found'));
         }
     }
 
     #[On('commentActionCancel')]
     public function ReplyCancelAction($id)
     {
-        $this->dispatch('alert', type: 'info', title: 'Action canceled.');
+        $this->dispatch('alert', type: 'info', title: __('messages.action_canceled'));
     }
 
 

@@ -42,14 +42,14 @@
                 @if (app()->getLocale() == 'ar')
 
                     <li class="language-switcher text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">
-                        <a wire:navigate href="locale/en" class="flex">
+                        <a  href="locale/en" class="flex">
                             <img class="w-5 mx-1" src="{{ asset('images/en.png') }}" alt="">
                             EN
                         </a>
                     </li>
                 @else
                     <li class="language-switcher text-base font-medium text-gray-800 hover:text-green-500 transition-colors duration-200">
-                        <a wire:navigate href="locale/ar" class=" flex">
+                        <a href="locale/ar" class=" flex">
                             <img class="w-5 mx-1" src="{{ asset('images/ar.png') }}" alt="">
                             <span>AR</span>
                         </a>
@@ -148,14 +148,14 @@
                         @if (app()->getLocale() == 'ar')
 
                         <li class="language-switcher text-lg font-medium hover:text-green-500 transition-colors duration-200">
-                            <a wire:navigate href="locale/en" class="flex">
+                            <a href="locale/en" class="flex">
                                 <img class="w-5 mx-1" src="{{ asset('images/en.png') }}" alt="">
                                 EN
                             </a>
                         </li>
                         @else
                             <li class="language-switcher text-lg font-medium  hover:text-green-500 transition-colors duration-200">
-                                <a wire:navigate href="locale/ar" class=" flex">
+                                <a href="locale/ar" class=" flex">
                                     <img class="w-5 mx-1" src=" {{ asset('images/ar.png') }}" alt="">
                                     <span>AR</span>
                                 </a>

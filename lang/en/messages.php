@@ -299,4 +299,24 @@ return [
 
     'text_color' => 'Text Color',
     'bg_color' => 'Background Color',
+
+    //Comment || Reply
+
+    'comment_added' => 'Comment added successfully!',
+    'comment_empty' => 'Comment cannot be empty!',
+    'reply_added' => 'Reply added successfully!',
+    'reply_empty' => 'Reply cannot be empty!',
+    'comment_deleted' => 'Comment deleted successfully!',
+    'comment_not_found' => 'Comment not found!',
+    'reply_deleted' => 'Reply deleted successfully!',
+    'reply_not_found' => 'Reply not found!',
+    'action_canceled' => 'Action canceled.',
+    'confirm_deletion_comment' => 'Are you sure you want to delete this comment?',
+    'confirm_deletion_reply' => 'Are you sure you want to delete this reply?',
+
+    'alert_title' => 'Confirm Deletion',
+
+    'yes' => 'Yes',
+    'no' => 'No',
+
 ];

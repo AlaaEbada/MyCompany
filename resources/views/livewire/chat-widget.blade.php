@@ -8,13 +8,13 @@
         class="flex flex-col items-center space-y-4 mt-4">
 
         <!-- WhatsApp -->
-        <a href="https://wa.me/010151193687" target="_blank"
+        <a href="https://wa.me/+201015119368" target="_blank"
             class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg">
             <i class="fa-brands fa-whatsapp fa-2xl"></i>
         </a>
 
         <!-- Phone -->
-        <a href="tel:+010151193687"
+        <a href="tel:+201015119368"
             class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg">
             <i class="fa-solid fa-phone fa-xl"></i>
         </a>

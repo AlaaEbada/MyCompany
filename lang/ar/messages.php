@@ -294,4 +294,22 @@ return [
     'text_color' => 'لون النص',
     'bg_color' => 'لون الخلفية',
 
+    //Comment || Reply
+
+    'comment_added' => 'تم إضافة التعليق بنجاح!',
+    'comment_empty' => 'لا يمكن أن يكون التعليق فارغًا!',
+    'reply_added' => 'تم إضافة الرد بنجاح!',
+    'reply_empty' => 'لا يمكن أن يكون الرد فارغًا!',
+    'comment_deleted' => 'تم حذف التعليق بنجاح!',
+    'comment_not_found' => 'التعليق غير موجود!',
+    'reply_deleted' => 'تم حذف الرد بنجاح!',
+    'reply_not_found' => 'الرد غير موجود!',
+    'action_canceled' => 'تم إلغاء العملية.',
+    'confirm_deletion_comment' => 'هل أنت متأكد أنك تريد حذف هذا التعليق؟',
+    'confirm_deletion_reply' => 'هل أنت متأكد أنك تريد حذف هذا الرد؟',
+    
+    'alert_title' => 'تأكيد الحذف',
+
+    'yes' => 'نعم',
+    'no' => 'لا',
 ];
