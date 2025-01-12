@@ -106,7 +106,7 @@
 
                 <!-- Pagination -->
                 <div class="mt-10">
-                    {{ $this->posts->links() }}
+                    {{ $portfolios->links(data: ['scrollTo' => false]) }}
                 </div>
             </div>
         </div>

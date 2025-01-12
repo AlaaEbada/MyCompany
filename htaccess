@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^.well-known/ - [L,NC]
+    # Redirect requests for files within the public directory
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+
+    # If the request is for a file within the public directory, skip the above rule
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Route all other requests through the public/index.php file
+    RewriteRule ^ index.php [L]
+    RewriteRule ^.well-known/ - [L,NC]
+    
+    <IfModule mod_rewrite.c>
+   	 RewriteEngine On
+   	 RewriteCond %{HTTPS} off
+     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	</IfModule>
+
+</IfModule>
