@@ -7,27 +7,7 @@
     <section id="contact" class="py-20 px-6 bg-gray-50 text-gray-900 relative">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-slide-up">{{ __('messages.contact_us') }}</h2>
-
-            <!-- Success Message -->
-            @if (session()->has('success'))
-                <div class="alert alert-success flex flex-row-reverse justify-between bg-green-500 text-white p-4 rounded-md mb-6">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close" class="text-white">&times;</button>
-                    <span>{{ session()->get('success') }}</span>
-                </div>
-            @endif
-
-            <!-- Error Message -->
-            @if ($errors->any())
-                <div class="alert alert-error flex flex-row-reverse justify-between bg-red-500 text-white p-4 rounded-md mb-6">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close" class="text-white">&times;</button>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
+    
             <form wire:submit.prevent="contact" class="max-w-3xl mx-auto space-y-6 animate-fade-in">
 
                 <div>
